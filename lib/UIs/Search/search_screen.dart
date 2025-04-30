@@ -15,7 +15,8 @@ class SearchScreen extends StatelessWidget {
         body: Column(
           children: [
             searchBar(),
-            const SearchResultCard(),
+            recommendationList()
+            // const SearchResultCard(),
           ],
         ),
       ),
