@@ -10,7 +10,7 @@ class ApiForDataFetching2 {
     SearchControllerClass.fetchingResultNotifier.value = FetchingStatus.loading;
     SearchControllerClass.results = await ytmusic.getSearchSuggestions(query);
     SearchControllerClass.fetchingResultNotifier.value = FetchingStatus.success;
-    // List<SearchResult> results = await ytmusic.search(query);
+    List<SearchResult> results = await ytmusic.search(query);
 
     // results.forEach((result) {
     //   // print("mayank ${result.toString()}");

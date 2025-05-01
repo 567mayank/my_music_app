@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
-import 'package:my_music_app/UIs/Search/search_screen.dart';
+import 'package:my_music_app/UIs/SearchResult/search_result_screen.dart';
 
 class Layout extends StatelessWidget {
   const Layout({super.key});
@@ -9,7 +9,7 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottomNavigationBarWidget(),
-      body: const SearchScreen(),
+      body: const SearchResultScreen(),
     );
   }
 }
@@ -22,7 +22,10 @@ Widget bottomNavigationBarWidget() {
     items: const [
       BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
       BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
-      BottomNavigationBarItem(icon: Icon(Icons.person_outlined), label: 'Library'),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person_outlined),
+        label: 'Library',
+      ),
     ],
   );
 }
