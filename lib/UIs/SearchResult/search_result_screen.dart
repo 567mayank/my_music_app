@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:my_music_app/UIs/SearchResult/search_result_controller.dart';
 import 'package:my_music_app/enum.dart';
 import 'search_result_widgets.dart';
+import 'package:my_music_app/UIs/Widgets/song.dart';
+import 'package:my_music_app/UIs/Widgets/playlist.dart';
+import 'package:my_music_app/UIs/Widgets/artist.dart';
+import 'package:my_music_app/UIs/Widgets/album.dart';
 
 class SearchResultScreen extends StatelessWidget {
   const SearchResultScreen({super.key});
@@ -16,15 +20,15 @@ class SearchResultScreen extends StatelessWidget {
           valueListenable: SearchResultController.searchResultTypeNotifier,
           builder: (context, value, child) {
             if (value == SearchResultType.all) {
-              return const AllResult();
+              return allResult();
             } else if (value == SearchResultType.songs) {
-              return const SongsResult();
+              return Container();
             } else if (value == SearchResultType.albums) {
-              return const AlbumsResult();
+              return Container();
             } else if (value == SearchResultType.artists) {
-              return const ArtistsResult();
+              return Container();
             }
-            return const PlaylistsResult();
+            return Container();
           },
         ),
       ],
@@ -32,47 +36,24 @@ class SearchResultScreen extends StatelessWidget {
   }
 }
 
-class AllResult extends StatelessWidget {
-  const AllResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class SongsResult extends StatelessWidget {
-  const SongsResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class AlbumsResult extends StatelessWidget {
-  const AlbumsResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class ArtistsResult extends StatelessWidget {
-  const ArtistsResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class PlaylistsResult extends StatelessWidget {
-  const PlaylistsResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+Widget allResult() {
+  return ValueListenableBuilder(
+    valueListenable: SearchResultController.allSearchResultNotifier,
+    builder: (context, value, child) {
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            // ...songList(songs: value["songs"] ?? [], length: 3),
+            ...albumList(
+              albums: value["albums"] ?? [],
+              rowCount: 1,
+              columnCount: 1,
+            ),
+            // ...playlistList(value["playlists"] ?? []),
+            // ...artistList(value["artists"] ?? []),
+          ],
+        ),
+      );
+    },
+  );
 }

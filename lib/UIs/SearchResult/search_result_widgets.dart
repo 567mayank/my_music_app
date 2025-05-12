@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
+import 'package:my_music_app/api_for_data_fetching2.dart';
 
 Widget header() {
   return Container(
@@ -15,15 +16,8 @@ Widget header() {
           child: Row(
             spacing: 10,
             children: [
-              Icon(
-                Icons.arrow_back_ios_new_outlined,
-                color: ThemeClass.textColor,
-                size: 20,
-              ),
-              Text(
-                "Search Results",
-                style: TextStyle(color: ThemeClass.textColor, fontSize: 20),
-              ),
+              Icon(Icons.arrow_back_ios_new_outlined, color: ThemeClass.textColor, size: 20),
+              Text("Search Results", style: TextStyle(color: ThemeClass.textColor, fontSize: 20)),
             ],
           ),
         ),
@@ -32,11 +26,7 @@ Widget header() {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             "Wavy",
-            style: TextStyle(
-              color: ThemeClass.textColor,
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(color: ThemeClass.textColor, fontSize: 50, fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -65,6 +55,7 @@ Widget optionBox(String option) {
   return GestureDetector(
     onTap: () {
       // For displaying the results of the selected option
+      ApiForDataFetching2.getSearchResultForAll("Wavy");
     },
     child: Container(
       width: 80,
@@ -73,23 +64,10 @@ Widget optionBox(String option) {
         // color: ThemeClass.secondaryColor,
         border: Border.all(color: ThemeClass.textColor),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: ThemeClass.textColor.withOpacity(0.2),
-            blurRadius: 10,
-            offset: Offset(0, 10),
-          ),
-        ],
+        boxShadow: [BoxShadow(color: ThemeClass.textColor.withOpacity(0.2), blurRadius: 10, offset: Offset(0, 10))],
       ),
       alignment: Alignment.center,
-      child: Text(
-        option,
-        style: TextStyle(
-          color: ThemeClass.textColor,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
+      child: Text(option, style: TextStyle(color: ThemeClass.textColor, fontSize: 20, fontWeight: FontWeight.w600)),
     ),
   );
 }

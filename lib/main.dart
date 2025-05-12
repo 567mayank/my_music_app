@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Layout.dart';
 import 'package:my_music_app/Theme/theme.dart';
+import 'package:my_music_app/app_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,9 +10,9 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    AppController.initGame(context); // initializing the game like yt music api and screen size
     return MaterialApp(
       title: 'May Music App',
       theme: ThemeData(

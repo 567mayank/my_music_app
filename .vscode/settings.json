@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  // "dart.lineLength": 120,
+  "[dart]": {
+    "editor.rulers": [200],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  }
+}

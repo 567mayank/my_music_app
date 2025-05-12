@@ -13,7 +13,6 @@ class SearchControllerClass {
   );
 
   static void onChange(String value) {
-    // print("mayank $value");
     validateSearch(value);
   }
 

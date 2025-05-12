@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/UIs/Search/search_controller.dart';
-import 'package:my_music_app/app_controller.dart';
+import 'package:my_music_app/app_setting.dart';
 import 'package:my_music_app/enum.dart';
 
 Widget searchBar() {
