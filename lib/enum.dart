@@ -12,3 +12,9 @@ enum SearchResultType {
   artists, // Shows only artist results
   playlists, // Shows only playlist results
 }
+
+enum Quality {
+  low,
+  medium,
+  high,
+}

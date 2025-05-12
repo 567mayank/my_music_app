@@ -32,7 +32,11 @@ class SongBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
                 image: NetworkImage(
-                  song.thumbnails[AppController.getQuality()].url,
+                  song
+                      .thumbnails[AppSetting.getQualityForThumbnail(
+                        song.thumbnails.length,
+                      )]
+                      .url,
                 ),
                 fit: BoxFit.cover,
               ),

@@ -27,24 +27,50 @@ class Responsive {
   }
 
   static double getPixelUsingPercentage({
-    double percentage = 1,
+    double percentage = 100,
     bool width = false,
     bool height = false,
+    double? parentHeight,
+    double? parentWidth,
   }) {
+    // just to make sure parameters passed are correct
     assert(
       !(width == true && height == true),
       "width and height cannot be true at the same time",
     );
     assert(
-      percentage > 0 && percentage <= 1,
-      "percentage must be greater than 0 and less than or equal to 1",
+      percentage > 0 && percentage <= 100,
+      "percentage must be greater than 0 and less than or equal to 100",
     );
+    assert(
+      (parentHeight == null && parentWidth == null) ||
+          (parentHeight != null && parentWidth != null),
+      "parentHeight and parentWidth must be provided or none of them",
+    );
+
+    // getting the reference height and width based on the parent height and width
+    double referenceHeight = parentHeight ?? deviceHeight!;
+    double referenceWidth = parentWidth ?? deviceWidth!;
+
+    // returning the pixel value based on the width or height
     if (width) {
-      return deviceWidth! * percentage;
+      return referenceWidth * (percentage / 100);
     } else if (height) {
-      return deviceHeight! * percentage;
+      return referenceHeight * (percentage / 100);
     }
-    return min(deviceWidth!, deviceHeight!) * percentage;
+    return min(referenceWidth, referenceHeight) * (percentage / 100);
+  }
+
+  static double getPixel(
+    double percentage, {
+    double? parentHeight,
+    double? parentWidth,
+  }) {
+    return getPixelUsingPercentage(
+      percentage: percentage,
+      parentHeight: parentHeight,
+      parentWidth: parentWidth,
+    );
   }
 
   static double getScreenWidth() {

@@ -40,18 +40,20 @@ Widget allResult() {
   return ValueListenableBuilder(
     valueListenable: SearchResultController.allSearchResultNotifier,
     builder: (context, value, child) {
-      return SingleChildScrollView(
-        child: Column(
-          children: [
-            // ...songList(songs: value["songs"] ?? [], length: 3),
-            ...albumList(
-              albums: value["albums"] ?? [],
-              rowCount: 1,
-              columnCount: 1,
-            ),
-            // ...playlistList(value["playlists"] ?? []),
-            // ...artistList(value["artists"] ?? []),
-          ],
+      return Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // ...songList(songs: value["songs"] ?? [], length: 3),
+              ...albumList(
+                albums: value["albums"] ?? [],
+                rowCount: 2,
+                columnCount: 2,
+              ),
+              // ...playlistList(value["playlists"] ?? []),
+              // ...artistList(value["artists"] ?? []),
+            ],
+          ),
         ),
       );
     },

@@ -26,7 +26,9 @@ class PlaylistBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
                 image: NetworkImage(
-                  playlist.thumbnails[AppController.getQuality()].url,
+                  playlist.thumbnails[AppSetting.getQualityForThumbnail(
+                    playlist.thumbnails.length,
+                  )].url,
                 ),
                 fit: BoxFit.cover,
               ),

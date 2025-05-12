@@ -26,7 +26,11 @@ class ArtistBox extends StatelessWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: NetworkImage(
-                  artist.thumbnails[AppController.getQuality()].url,
+                  artist
+                      .thumbnails[AppSetting.getQualityForThumbnail(
+                        artist.thumbnails.length,
+                      )]
+                      .url,
                 ),
                 fit: BoxFit.cover,
               ),

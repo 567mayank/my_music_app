@@ -11,7 +11,7 @@ List<Widget> albumList({
 }) {
   albums = albums.sublist(0, min(albums.length, rowCount * columnCount));
   final double margin = Responsive.getPixelUsingPercentage(
-    percentage: 0.02,
+    percentage: 2,
     width: true,
   );
   final double sizeOfBox =
@@ -22,6 +22,7 @@ List<Widget> albumList({
   Widget sizedBoxInbetweenBoxes = SizedBox(width: margin);
   Widget sizedBoxStartOrEndBoxes = SizedBox(width: margin);
   List<Widget> rows = [];
+
   for (int i = 0; i < rowCount; i++) {
     List<Widget> rowChildren = [];
     rowChildren.add(sizedBoxStartOrEndBoxes);
@@ -38,7 +39,9 @@ List<Widget> albumList({
     rows.add(
       Row(mainAxisAlignment: MainAxisAlignment.start, children: rowChildren),
     );
+    rows.add(SizedBox(height: margin));
   }
+
   return rows;
 }
 
@@ -56,41 +59,72 @@ class AlbumBox extends StatelessWidget {
       },
       child: Container(
         width: sizeOfBox,
-        height: sizeOfBox,
-        color: Colors.red,
+        // height: sizeOfBox,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: sizeOfBox,
-              height: sizeOfBox * 0.75,
+              height: sizeOfBox,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(
+                  Responsive.getPixel(
+                    5,
+                    parentHeight: sizeOfBox,
+                    parentWidth: sizeOfBox,
+                  ),
+                ),
                 image: DecorationImage(
                   image: NetworkImage(
-                    album.thumbnails[AppController.getQuality()].url,
+                    album
+                        .thumbnails[AppSetting.getQualityForThumbnail(
+                          album.thumbnails.length,
+                        )]
+                        .url,
                   ),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(
+              height: Responsive.getPixelUsingPercentage(
+                percentage: 2,
+                height: true,
+                parentHeight: sizeOfBox,
+                parentWidth: sizeOfBox,
+              ),
+            ),
             Text(
               album.name,
               style: TextStyle(
                 color: ThemeClass.textColor,
-                fontSize: 14,
+                fontSize: Responsive.getPixel(
+                  8,
+                  parentHeight: sizeOfBox,
+                  parentWidth: sizeOfBox,
+                ),
                 fontWeight: FontWeight.w500,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 4),
+            SizedBox(
+              height: Responsive.getPixelUsingPercentage(
+                percentage: 0.1,
+                height: true,
+                parentHeight: sizeOfBox,
+                parentWidth: sizeOfBox,
+              ),
+            ),
             Text(
               "${album.artist.name} • ${album.year}",
               style: TextStyle(
                 color: ThemeClass.textColor.withOpacity(0.7),
-                fontSize: 12,
+                fontSize: Responsive.getPixel(
+                  6,
+                  parentHeight: sizeOfBox,
+                  parentWidth: sizeOfBox,
+                ),
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
