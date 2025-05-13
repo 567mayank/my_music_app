@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/app_setting.dart';
+import 'package:my_music_app/UIs/responsive.dart';
+import 'dart:math';
 
-List<Widget> artistList(List<dynamic> artists) {
-  return List.generate(
-    artists.length,
-    (index) => ArtistBox(artist: artists[index]),
+Widget artistList(List<dynamic> artists, {int? length}) {
+  if (length != null) {
+    length = min(length, artists.length);
+  } else {
+    length = artists.length;
+  }
+  return SizedBox(
+    height: Responsive.getPixel(40),
+    child: ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: length,
+      itemBuilder: (context, index) => ArtistBox(artist: artists[index]),
+    ),
   );
 }
 
@@ -16,12 +27,13 @@ class ArtistBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
+      width: Responsive.getPixel(30),
+      margin: EdgeInsets.symmetric(horizontal: Responsive.getPixel(3)),
+      child: Column(
         children: [
           Container(
-            height: 56,
-            width: 56,
+            width: Responsive.getPixel(30),
+            height: Responsive.getPixel(30),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -36,18 +48,16 @@ class ArtistBox extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              artist.name,
-              style: TextStyle(
-                color: ThemeClass.textColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+          SizedBox(height: Responsive.getPixel(2)),
+          Text(
+            artist.name,
+            style: TextStyle(
+              color: ThemeClass.textColor,
+              fontSize: Responsive.getPixel(5),
+              fontWeight: FontWeight.w500,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

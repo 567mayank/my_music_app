@@ -5,14 +5,17 @@ import 'dart:math';
 
 List<Widget> songList({required List<dynamic> songs, int? length}) {
   if (length != null) {
-    songs = songs.sublist(0, min(songs.length, length));
+    length = min(length, songs.length);
+  } else {
+    length = songs.length;
   }
-  return List.generate(songs.length, (index) => SongBar(song: songs[index]));
+  return List.generate(length, (index) => SongBar(song: songs[index]));
 }
 
 class SongBar extends StatelessWidget {
-  final dynamic song;
   const SongBar({super.key, required this.song});
+
+  final dynamic song;
 
   @override
   Widget build(BuildContext context) {

@@ -44,14 +44,14 @@ Widget allResult() {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // ...songList(songs: value["songs"] ?? [], length: 3),
+              ...songList(songs: value["songs"] ?? [], length: 30),
               ...albumList(
                 albums: value["albums"] ?? [],
-                rowCount: 2,
+                rowCount: 1,
                 columnCount: 2,
               ),
+              artistList(value["artists"] ?? [], length: 4),
               // ...playlistList(value["playlists"] ?? []),
-              // ...artistList(value["artists"] ?? []),
             ],
           ),
         ),
