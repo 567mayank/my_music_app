@@ -17,9 +17,7 @@ class ApiForDataFetching2 {
   }
 
   static Future<void> getSearchResultForAll(String query) async {
-    List<dynamic> searchResult = await ytmusic.search(
-      query,
-    ); // calling api for all search result
+    List<dynamic> searchResults = await ytmusic.search(query);
 
     // for segregating all search result into different categories
     Map<String, List<dynamic>> allSearchResult = {
@@ -29,7 +27,7 @@ class ApiForDataFetching2 {
       "playlists": [],
     };
 
-    for (var res in searchResult) {
+    for (var res in searchResults) {
       if (res is SongDetailed || res is VideoDetailed) {
         allSearchResult["songs"]!.add(res);
       } else if (res is ArtistDetailed) {

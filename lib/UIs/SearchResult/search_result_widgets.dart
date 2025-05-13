@@ -70,7 +70,7 @@ Widget optionBox(String option) {
   return GestureDetector(
     onTap: () {
       // For displaying the results of the selected option
-      ApiForDataFetching2.getSearchResultForAll("Wavy");
+      ApiForDataFetching2.getSearchResultForAll("Karan aujla");
     },
     child: Container(
       width: 80,
@@ -105,7 +105,7 @@ Widget songColumn(List<dynamic> songs) {
     child: Column(
       children: [
         Column(
-          children: [heading("Songs"), ...songList(songs: songs, length: 10)],
+          children: [heading("Songs"), ...songList(songs: songs, length: 3)],
         ),
       ],
     ),
