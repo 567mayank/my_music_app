@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_music_app/UIs/SearchResult/search_result_controller.dart';
 import 'package:my_music_app/enum.dart';
 import 'search_result_widgets.dart';
-import 'package:my_music_app/UIs/Widgets/song.dart';
-import 'package:my_music_app/UIs/Widgets/playlist.dart';
-import 'package:my_music_app/UIs/Widgets/artist.dart';
-import 'package:my_music_app/UIs/Widgets/album.dart';
 
 class SearchResultScreen extends StatelessWidget {
   const SearchResultScreen({super.key});
@@ -44,13 +40,9 @@ Widget allResult() {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ...songList(songs: value["songs"] ?? [], length: 30),
-              ...albumList(
-                albums: value["albums"] ?? [],
-                rowCount: 1,
-                columnCount: 2,
-              ),
-              artistList(value["artists"] ?? [], length: 4),
+              songColumn(value["songs"] ?? []),
+              albumColumn(value["albums"] ?? []),
+              artistColumn(value["artists"] ?? []),
               // ...playlistList(value["playlists"] ?? []),
             ],
           ),

@@ -61,6 +61,32 @@ class Responsive {
     return min(referenceWidth, referenceHeight) * (percentage / 100);
   }
 
+  static double getPixelForWidth(
+    double percentage, {
+    double? parentHeight,
+    double? parentWidth,
+  }) {
+    return getPixelUsingPercentage(
+      percentage: percentage,
+      width: true,
+      parentHeight: parentHeight,
+      parentWidth: parentWidth,
+    );
+  }
+
+  static double getPixelForHeight(
+    double percentage, {
+    double? parentHeight,
+    double? parentWidth,
+  }) {
+    return getPixelUsingPercentage(
+      percentage: percentage,
+      height: true,
+      parentHeight: parentHeight,
+      parentWidth: parentWidth,
+    );
+  }
+
   static double getPixel(
     double percentage, {
     double? parentHeight,

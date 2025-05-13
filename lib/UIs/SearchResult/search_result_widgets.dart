@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
+import 'package:my_music_app/UIs/Widgets/album.dart';
+import 'package:my_music_app/UIs/Widgets/artist.dart';
 import 'package:my_music_app/api_for_data_fetching2.dart';
+import 'package:my_music_app/UIs/responsive.dart';
+import 'package:my_music_app/UIs/Widgets/song.dart';
 
 Widget header() {
   return Container(
@@ -16,8 +20,15 @@ Widget header() {
           child: Row(
             spacing: 10,
             children: [
-              Icon(Icons.arrow_back_ios_new_outlined, color: ThemeClass.textColor, size: 20),
-              Text("Search Results", style: TextStyle(color: ThemeClass.textColor, fontSize: 20)),
+              Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: ThemeClass.textColor,
+                size: 20,
+              ),
+              Text(
+                "Search Results",
+                style: TextStyle(color: ThemeClass.textColor, fontSize: 20),
+              ),
             ],
           ),
         ),
@@ -26,7 +37,11 @@ Widget header() {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             "Wavy",
-            style: TextStyle(color: ThemeClass.textColor, fontSize: 50, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: ThemeClass.textColor,
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -61,13 +76,88 @@ Widget optionBox(String option) {
       width: 80,
       height: 40,
       decoration: BoxDecoration(
-        // color: ThemeClass.secondaryColor,
         border: Border.all(color: ThemeClass.textColor),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [BoxShadow(color: ThemeClass.textColor.withOpacity(0.2), blurRadius: 10, offset: Offset(0, 10))],
+        boxShadow: [
+          BoxShadow(
+            color: ThemeClass.textColor.withOpacity(0.2),
+            blurRadius: 10,
+            offset: Offset(0, 10),
+          ),
+        ],
       ),
       alignment: Alignment.center,
-      child: Text(option, style: TextStyle(color: ThemeClass.textColor, fontSize: 20, fontWeight: FontWeight.w600)),
+      child: Text(
+        option,
+        style: TextStyle(
+          color: ThemeClass.textColor,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     ),
+  );
+}
+
+Widget songColumn(List<dynamic> songs) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: Responsive.getPixelForWidth(4)),
+    child: Column(
+      children: [
+        Column(
+          children: [heading("Songs"), ...songList(songs: songs, length: 10)],
+        ),
+      ],
+    ),
+  );
+}
+
+Widget albumColumn(List<dynamic> albums) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: Responsive.getPixelForWidth(4)),
+    child: Column(
+      children: [
+        heading("Albums"),
+        ...albumList(
+          albums: albums,
+          rowCount: 1,
+          columnCount: 2,
+          margin: Responsive.getPixel(4),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget artistColumn(List<dynamic> artists) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: Responsive.getPixelForWidth(4)),
+    child: Column(
+      children: [heading("Artists"), artistList(artists, length: 4)],
+    ),
+  );
+}
+
+Widget heading(String text, {bool showArrow = true, Function()? onTap}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        text,
+        style: TextStyle(
+          fontSize: Responsive.getPixel(10),
+          fontWeight: FontWeight.bold,
+          color: ThemeClass.textColor,
+        ),
+      ),
+      if (showArrow)
+        IconButton(
+          onPressed: () {
+            onTap?.call();
+          },
+          icon: Icon(Icons.arrow_forward, size: Responsive.getPixel(8)),
+          color: ThemeClass.textColor,
+        ),
+    ],
   );
 }

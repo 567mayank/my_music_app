@@ -11,7 +11,7 @@ Widget artistList(List<dynamic> artists, {int? length}) {
     length = artists.length;
   }
   return SizedBox(
-    height: Responsive.getPixel(40),
+    height: Responsive.getPixelForHeight(20),
     child: ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: length,
@@ -27,13 +27,13 @@ class ArtistBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Responsive.getPixel(30),
-      margin: EdgeInsets.symmetric(horizontal: Responsive.getPixel(3)),
+      width: Responsive.getPixelForWidth(30),
+      margin: EdgeInsets.symmetric(horizontal: Responsive.getPixelForWidth(3)),
       child: Column(
         children: [
           Container(
-            width: Responsive.getPixel(30),
-            height: Responsive.getPixel(30),
+            width: Responsive.getPixelForWidth(30),
+            height: Responsive.getPixelForHeight(16),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -48,7 +48,7 @@ class ArtistBox extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: Responsive.getPixel(2)),
+          SizedBox(height: Responsive.getPixelForHeight(.2)),
           Text(
             artist.name,
             style: TextStyle(

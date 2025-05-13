@@ -6,26 +6,21 @@ import 'package:my_music_app/UIs/responsive.dart';
 
 List<Widget> albumList({
   required List<dynamic> albums,
+  required double margin,
   int rowCount = 1,
   int columnCount = 1,
 }) {
   albums = albums.sublist(0, min(albums.length, rowCount * columnCount));
-  final double margin = Responsive.getPixelUsingPercentage(
-    percentage: 2,
-    width: true,
-  );
   final double sizeOfBox =
       (Responsive.getScreenWidth() -
           (margin * 2) -
           (margin * (columnCount - 1))) /
       columnCount;
   Widget sizedBoxInbetweenBoxes = SizedBox(width: margin);
-  Widget sizedBoxStartOrEndBoxes = SizedBox(width: margin);
   List<Widget> rows = [];
 
   for (int i = 0; i < rowCount; i++) {
     List<Widget> rowChildren = [];
-    rowChildren.add(sizedBoxStartOrEndBoxes);
     for (int j = 0; j < columnCount; j++) {
       int index = i * columnCount + j;
       if (index < albums.length) {
@@ -35,7 +30,6 @@ List<Widget> albumList({
         }
       }
     }
-    rowChildren.add(sizedBoxStartOrEndBoxes);
     rows.add(
       Row(mainAxisAlignment: MainAxisAlignment.start, children: rowChildren),
     );
@@ -57,9 +51,8 @@ class AlbumBox extends StatelessWidget {
       onTap: () {
         // TODO: Implement onTap
       },
-      child: Container(
+      child: SizedBox(
         width: sizeOfBox,
-        // height: sizeOfBox,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -87,9 +80,8 @@ class AlbumBox extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: Responsive.getPixelUsingPercentage(
-                percentage: 2,
-                height: true,
+              height: Responsive.getPixelForHeight(
+                2,
                 parentHeight: sizeOfBox,
                 parentWidth: sizeOfBox,
               ),
@@ -109,9 +101,8 @@ class AlbumBox extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(
-              height: Responsive.getPixelUsingPercentage(
-                percentage: 0.1,
-                height: true,
+              height: Responsive.getPixelForHeight(
+                0.1,
                 parentHeight: sizeOfBox,
                 parentWidth: sizeOfBox,
               ),

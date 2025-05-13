@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/app_setting.dart';
+import 'package:my_music_app/UIs/responsive.dart';
 import 'dart:math';
 
 List<Widget> songList({required List<dynamic> songs, int? length}) {
@@ -20,19 +21,19 @@ class SongBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.only(bottom: Responsive.getPixelForHeight(1)),
+      padding: EdgeInsets.all(Responsive.getPixel(3)),
       decoration: BoxDecoration(
         color: ThemeClass.textColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Responsive.getPixel(3)),
       ),
       child: Row(
         children: [
           Container(
-            width: 60,
-            height: 60,
+            width: Responsive.getPixel(14),
+            height: Responsive.getPixel(14),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Responsive.getPixel(2)),
               image: DecorationImage(
                 image: NetworkImage(
                   song
@@ -45,7 +46,7 @@ class SongBar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: Responsive.getPixelForWidth(3)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,29 +55,29 @@ class SongBar extends StatelessWidget {
                   song.name,
                   style: TextStyle(
                     color: ThemeClass.textColor,
-                    fontSize: 16,
+                    fontSize: Responsive.getPixel(4),
                     fontWeight: FontWeight.w500,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: Responsive.getPixel(1)),
                 Text(
                   song.artist.name,
                   style: TextStyle(
                     color: ThemeClass.textColor.withOpacity(0.7),
-                    fontSize: 14,
+                    fontSize: Responsive.getPixel(3),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: Responsive.getPixelForWidth(2)),
           Text(
             song.duration ?? "",
             style: TextStyle(
               color: ThemeClass.textColor.withOpacity(0.7),
-              fontSize: 14,
+              fontSize: Responsive.getPixel(3),
             ),
           ),
         ],
