@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_music_app/UIs/Search/search_widgets.dart';
-
+import 'package:my_music_app/UIs/Screens/Search/search_widgets.dart';
+import 'package:my_music_app/UIs/Widgets/bottom_navigation_bar.dart';
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
@@ -12,13 +12,8 @@ class SearchScreen extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        body: Column(
-          children: [
-            searchBar(),
-            recommendationList()
-            // const SearchResultCard(),
-          ],
-        ),
+        body: Column(children: [searchBar(), recommendationList()]),
+        bottomNavigationBar: bottomNavigationBarWidget(),
       ),
     );
   }

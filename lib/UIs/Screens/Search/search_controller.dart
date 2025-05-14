@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../api_for_data_fetching2.dart';
-import '../../enum.dart';
+import '../../../api_for_data_fetching2.dart';
+import '../../../enum.dart';
 
 class SearchControllerClass {
   static final TextEditingController searchController = TextEditingController();

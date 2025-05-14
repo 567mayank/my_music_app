@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/app_setting.dart';
 import 'dart:math';
-import 'package:my_music_app/UIs/responsive.dart';
+import 'package:my_music_app/responsive.dart';
 
 List<Widget> albumList({
   required List<dynamic> albums,

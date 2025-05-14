@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/app_setting.dart';
-import 'package:my_music_app/UIs/responsive.dart';
+import 'package:my_music_app/responsive.dart';
 import 'dart:math';
 
 Widget artistList(List<dynamic> artists, {int? length}) {

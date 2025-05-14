@@ -1,7 +1,7 @@
 import 'package:dart_ytmusic_api/dart_ytmusic_api.dart';
-import 'package:my_music_app/UIs/Search/search_controller.dart';
+import 'package:my_music_app/UIs/Screens/Search/search_controller.dart';
+import 'package:my_music_app/UIs/Screens/SearchResult/search_result_controller.dart';
 import 'package:my_music_app/enum.dart';
-import 'package:my_music_app/UIs/SearchResult/search_result_controller.dart';
 
 class ApiForDataFetching2 {
   static final ytmusic = YTMusic();

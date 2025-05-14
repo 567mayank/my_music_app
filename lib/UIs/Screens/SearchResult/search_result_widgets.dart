@@ -3,7 +3,7 @@ import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/UIs/Widgets/album.dart';
 import 'package:my_music_app/UIs/Widgets/artist.dart';
 import 'package:my_music_app/api_for_data_fetching2.dart';
-import 'package:my_music_app/UIs/responsive.dart';
+import 'package:my_music_app/responsive.dart';
 import 'package:my_music_app/UIs/Widgets/song.dart';
 
 Widget header() {
@@ -70,7 +70,7 @@ Widget optionBox(String option) {
   return GestureDetector(
     onTap: () {
       // For displaying the results of the selected option
-      ApiForDataFetching2.getSearchResultForAll("Karan aujla");
+      ApiForDataFetching2.getSearchResultForAll("Sidhu Moose Wala");
     },
     child: Container(
       width: 80,
