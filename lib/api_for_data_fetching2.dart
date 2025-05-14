@@ -10,7 +10,7 @@ class ApiForDataFetching2 {
     await ytmusic.initialize();
   }
 
-  static Future<void> search(String query) async {
+  static Future<void> searchForSuggestions(String query) async {
     SearchControllerClass.fetchingResultNotifier.value = FetchingStatus.loading;
     SearchControllerClass.results = await ytmusic.getSearchSuggestions(query);
     SearchControllerClass.fetchingResultNotifier.value = FetchingStatus.success;

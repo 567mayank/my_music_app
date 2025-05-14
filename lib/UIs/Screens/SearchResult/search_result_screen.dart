@@ -4,8 +4,19 @@ import 'package:my_music_app/enum.dart';
 import 'search_result_widgets.dart';
 import 'package:my_music_app/UIs/Widgets/bottom_navigation_bar.dart';
 
-class SearchResultScreen extends StatelessWidget {
+class SearchResultScreen extends StatefulWidget {
   const SearchResultScreen({super.key});
+
+  @override
+  State<SearchResultScreen> createState() => _SearchResultScreenState();
+}
+
+class _SearchResultScreenState extends State<SearchResultScreen> {
+  @override
+  void initState() {
+    super.initState();
+    SearchResultController.context = context;
+  }
 
   @override
   Widget build(BuildContext context) {

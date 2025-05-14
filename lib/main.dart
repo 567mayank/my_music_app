@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     ); // initializing the game like yt music api and screen size
 
     return MaterialApp(
-      initialRoute: "/searchResult",
+      initialRoute: "/search",
       routes: routes,
       title: 'May Music App',
       theme: ThemeData(

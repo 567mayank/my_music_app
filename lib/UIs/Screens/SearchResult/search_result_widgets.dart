@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
+import 'package:my_music_app/UIs/Screens/SearchResult/search_result_controller.dart';
 import 'package:my_music_app/UIs/Widgets/album.dart';
 import 'package:my_music_app/UIs/Widgets/artist.dart';
 import 'package:my_music_app/api_for_data_fetching2.dart';
@@ -36,7 +37,7 @@ Widget header() {
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Text(
-            "Wavy",
+            SearchResultController.searchQuery,
             style: TextStyle(
               color: ThemeClass.textColor,
               fontSize: 50,
@@ -70,7 +71,9 @@ Widget optionBox(String option) {
   return GestureDetector(
     onTap: () {
       // For displaying the results of the selected option
-      ApiForDataFetching2.getSearchResultForAll("Sidhu Moose Wala");
+      ApiForDataFetching2.getSearchResultForAll(
+        SearchResultController.searchQuery,
+      );
     },
     child: Container(
       width: 80,

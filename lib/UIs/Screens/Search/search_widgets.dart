@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_music_app/Theme/theme.dart';
 import 'package:my_music_app/UIs/Screens/Search/search_controller.dart';
-import 'package:my_music_app/app_setting.dart';
 import 'package:my_music_app/enum.dart';
 
 Widget searchBar() {
@@ -56,28 +55,35 @@ Widget recommendationList() {
           child: ListView.builder(
             itemCount: SearchControllerClass.results.length,
             itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      color: ThemeClass.secondaryColor,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        SearchControllerClass.results[index],
-                        style: const TextStyle(
-                          color: ThemeClass.textColor,
-                          fontSize: 16,
-                        ),
-                        overflow: TextOverflow.ellipsis,
+              return GestureDetector(
+                onTap: () {
+                  SearchControllerClass.onSubmit(
+                    SearchControllerClass.results[index],
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        color: ThemeClass.secondaryColor,
+                        size: 20,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          SearchControllerClass.results[index],
+                          style: const TextStyle(
+                            color: ThemeClass.textColor,
+                            fontSize: 16,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
